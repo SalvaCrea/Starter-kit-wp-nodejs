@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SalvaCrea/Starter-kit-wp-nodejs/issues"
   },
+  "dependencies": {
+    "tool-files": "^1.0.0"
+  },
   "homepage": "https://github.com/SalvaCrea/Starter-kit-wp-nodejs#readme"
 }
