@@ -1,29 +1,26 @@
-// starterKitNodeJs.js
+// module.exports.js
 // ========
 
 var toolFiles = require('tool-files');
-var starterKitNodeJs = {};
-
+var self = module.exports;
 /**
  * Return Configuration
  * @return {[object]} Configuration object
  */
-starterKitNodeJs.getConfiguration = function(){
-  return toolFiles.getFileJson('./configuration.json');
+self.getConfiguration = function(){
+    return toolFiles.getFileJson('./configuration.json');
 }
 /**
  * Return Path container theme folder
  * @return {[string]} Path theme folder
  */
-starterKitNodeJs.getPathFolderTheme = function(){
-  return './wordpress/wp-content/themes';
+self.getPathFolderTheme = function(){
+    return './wordpress/wp-content/themes';
 }
 /**
  * Return Path container theme folder
  * @return {[string]} Path theme folder
  */
-starterKitNodeJs.getPathTheme = function(){
-  return this.getPathFolderTheme() + '/' + this.getConfiguration().themeName;
+self.getPathTheme = function(){
+    return self.getPathFolderTheme() + '/' + self.getConfiguration().themeName;
 }
-
-module.exports = starterKitNodeJs;
