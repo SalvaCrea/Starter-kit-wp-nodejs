@@ -16,6 +16,7 @@
     "url": "https://github.com/SalvaCrea/Starter-kit-wp-nodejs/issues"
   },
   "dependencies": {
+    "gulp-git": "^2.5.1",
     "tool-files": "^1.0.0"
   },
   "homepage": "https://github.com/SalvaCrea/Starter-kit-wp-nodejs#readme"

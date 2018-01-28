@@ -3,6 +3,7 @@
 var fs        = require('fs');
 var http      = require('https');
 var toolFiles = require('tool-files');
+var git       = require('gulp-git');
 
 var self = module.exports;
 /**
@@ -27,20 +28,19 @@ self.getPathTheme = function() {
     return self.getPathFolderTheme() + '/' + self.getConfiguration().themeName;
 }
 /**
- * Dowload and write file in the destination
- * @param {[string]} url  The url of file
- * @param {[string]} dest The path of destination
- * @param {Function} cb   Function callback
+ *  Dowload Wp Cli in the folder Wordpres
  */
-self.dowloadFile = function(url, dest, cb = ()) {
-    var file = fs.createWriteStream(dest);
-    var request = http.get(url, function(response) {
-        response.pipe(file);
-        file.on('finish', function() {
-            file.close(cb);  // close() is async, call cb after close completes.
-        });
-    }).on('error', function(err) { // Handle errors
-        fs.unlink(dest); // Delete the file async. (But we don't check the result)
-        if (cb) cb(err.message);
+self.dowloadWpCli = function() {
+    toolFiles.dowloadFile(
+        'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+        './wordpress/wp-cli.phar'
+    );
+}
+/**
+ *  Dowload Wp Cli in the folder Wordpres
+ */
+self.dowloadWordpress = function() {
+    return git.clone('https://github.com/WordPress/WordPress', {args: './wordpress'}, function(err) {
+      // handle err
     });
 }
